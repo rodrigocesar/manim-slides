@@ -1,0 +1,17 @@
+{
+  "title": "Are we making better decisions?",
+  "scenes": [
+    "Title",
+    "WhatDoesGoodMean",
+    "OutputsAreNotDecisions",
+    "CoupledDecisions",
+    "PowellFive",
+    "OptimalVsRobust",
+    "SPPPipeline",
+    "Counterfactual",
+    "MetricLayers",
+    "DecisionMap",
+    "FiveQuestions"
+  ],
+  "backup_scenes": ["BackupPolicies"]
+}

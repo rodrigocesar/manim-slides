@@ -1,4 +1,4 @@
-"""Shared visual system for the DORA decision talk."""
+"""Shared visual system for Manim Slides talks in this repo."""
 
 from __future__ import annotations
 
@@ -64,7 +64,7 @@ def slide_title(text: str) -> MarkupText:
     return txt(text, size=TITLE_SIZE, weight="BOLD").to_edge(UP, buff=0.38)
 
 
-def footer(text: str = "Powell (2022) · CASTLE Lab · sequential decision analytics") -> MarkupText:
+def footer(text: str) -> MarkupText:
     return txt(text, size=14, color=MUTE).to_edge(DOWN, buff=0.22)
 
 

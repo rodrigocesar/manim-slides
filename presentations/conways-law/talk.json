@@ -1,0 +1,13 @@
+{
+  "title": "Conway's Law",
+  "scenes": [
+    "Title",
+    "TheSentence",
+    "OrgMirrorsSystem",
+    "CommunicationNotBoxes",
+    "SeamsBecomeInterfaces",
+    "DORAExample",
+    "InverseConway",
+    "Questions"
+  ]
+}

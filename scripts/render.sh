@@ -1,31 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-cd "$ROOT"
 # shellcheck disable=SC1091
-source .venv/bin/activate
+source "${ROOT}/scripts/_talk.sh"
+# shellcheck disable=SC1091
+source "${ROOT}/.venv/bin/activate"
 
+TALK_DIR="$(resolve_talk "${1:-}")"
+shift
 QUALITY="${1:--ql}"
-shift || true
+if [[ "${QUALITY}" == -q* ]]; then
+  shift || true
+fi
 
-SCENES=(
-  Title
-  WhatDoesGoodMean
-  OutputsAreNotDecisions
-  CoupledDecisions
-  PowellFive
-  OptimalVsRobust
-  SPPPipeline
-  Counterfactual
-  MetricLayers
-  DecisionMap
-  FiveQuestions
-  BackupPolicies
-)
-
+mapfile -t SCENES < <(talk_scenes "${TALK_DIR}")
 if [[ $# -gt 0 ]]; then
   SCENES=("$@")
 fi
 
-# Everything after -- is forwarded to Manim. manim-slides itself only accepts --CE/--GL.
-manim-slides render -- "$QUALITY" --disable_caching src/deck.py "${SCENES[@]}"
+export PYTHONPATH="${ROOT}/shared${PYTHONPATH:+:${PYTHONPATH}}"
+cd "${TALK_DIR}"
+manim-slides render -- "${QUALITY}" --disable_caching -c "${ROOT}/manim.cfg" deck.py "${SCENES[@]}"

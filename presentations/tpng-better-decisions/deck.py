@@ -5,7 +5,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "shared"))
 
 from manim import *
 from manim_slides import Slide
@@ -42,7 +43,7 @@ class DoraSlide(Slide):
         if title:
             parts.append(slide_title(title))
         if cite:
-            parts.append(footer())
+            parts.append(footer("Powell (2022) · CASTLE Lab · sequential decision analytics"))
         if parts:
             self.add(*parts)
         return parts

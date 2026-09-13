@@ -3,7 +3,8 @@ __pycache__/
 *.pyc
 media/
 slides/
+presentations/*/media/
+presentations/*/slides/
 .manim-slides/
-# dist/ is the shareable HTML deck — keep it in the repo
 *.log
 .partial_manim_files/
