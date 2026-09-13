@@ -41,4 +41,5 @@ COLORS = Colors()
 SIZES = Sizes()
 SPACING = Spacing()
 
+FONT = "DejaVu Sans"
 DEFAULT_AUTHOR = "Rodrigo Cesar"

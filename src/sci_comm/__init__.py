@@ -9,10 +9,11 @@ from sci_comm.components import (
     make_text,
     two_column,
 )
-from sci_comm.theme import COLORS, SIZES, SPACING
+from sci_comm.theme import COLORS, FONT, SIZES, SPACING
 
 __all__ = [
     "COLORS",
+    "FONT",
     "SIZES",
     "SPACING",
     "SciSlide",

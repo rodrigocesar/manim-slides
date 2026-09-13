@@ -19,7 +19,7 @@ from manim import (
     VGroup,
 )
 
-from sci_comm.theme import COLORS, SIZES, SPACING
+from sci_comm.theme import COLORS, FONT, SIZES, SPACING
 
 
 def make_text(
@@ -30,6 +30,7 @@ def make_text(
 ) -> Text:
     return Text(
         text,
+        font=FONT,
         font_size=size or SIZES.body,
         color=color or COLORS.fg,
         **kwargs,
@@ -46,8 +47,8 @@ def bullets(
     size = font_size or SIZES.body
     rows = VGroup()
     for item in items:
-        mark = Text("•", font_size=size, color=mark_color or COLORS.yellow)
-        body = Text(item, font_size=size, color=color or COLORS.fg)
+        mark = Text("•", font=FONT, font_size=size, color=mark_color or COLORS.yellow)
+        body = Text(item, font=FONT, font_size=size, color=color or COLORS.fg)
         row = VGroup(mark, body).arrange(RIGHT, buff=0.22, aligned_edge=UP)
         rows.add(row)
     rows.arrange(DOWN, buff=SPACING.bullet, aligned_edge=LEFT)
@@ -61,8 +62,8 @@ def callout(
 ) -> VGroup:
     """Titled note in a rounded stroke, for a warning, takeaway, or definition."""
     accent = accent or COLORS.gold
-    title_m = Text(title, font_size=SIZES.small + 4, color=accent)
-    body_m = Text(body, font_size=SIZES.small + 2, color=COLORS.fg)
+    title_m = Text(title, font=FONT, font_size=SIZES.small + 4, color=accent)
+    body_m = Text(body, font=FONT, font_size=SIZES.small + 2, color=COLORS.fg)
     content = VGroup(title_m, body_m).arrange(DOWN, buff=0.22, aligned_edge=LEFT)
     box = SurroundingRectangle(
         content,

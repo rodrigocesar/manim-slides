@@ -12,7 +12,7 @@ cd manim-slides
 ./scripts/setup-wsl.sh
 ```
 
-The setup script installs Cairo, Pango, FFmpeg, a science-oriented TeX Live set (not `texlive-full`), then syncs the `uv` environment.
+The setup script installs Cairo, Pango, FFmpeg, `dvisvgm`, a science-oriented TeX Live set (not `texlive-full`), then syncs the `uv` environment.
 
 ## How a talk is added
 

@@ -11,8 +11,9 @@ Follow `.cursor/skills/create-manim-talk/SKILL.md`. In short:
 3. Write `talks/<slug>/main.py` with one `SciSlide` subclass per section.
 4. Reuse `COLORS`, `bullets`, `callout`, `colored_math`, `two_column`, `fade_in_each`.
 5. Pause with `self.next_slide()`. Use `loop=True` only for a repeating figure.
-6. Titles and labels: `Text` / `make_text`. Equations: `MathTex` / `colored_math`.
-7. Put the exact `manim-slides render` and `present` commands in the brief.
+6. Titles and labels: `make_text` or `SciSlide.heading` (they set `FONT`). Do not call `Text(...)` without `font=FONT` — the default font drops spaces.
+7. Equations: `MathTex` / `colored_math`.
+8. Put the exact `manim-slides render` and `present` commands in the brief.
 
 ## Scene split
 

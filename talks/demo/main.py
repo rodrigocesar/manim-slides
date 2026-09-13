@@ -22,8 +22,8 @@ class Title(DemoSlide):
     def construct(self) -> None:
         self.add_chrome(index=1, total=5)
         kicker = make_text("A reusable kit", size=SIZES.small, color=COLORS.blue)
-        line1 = Text("Scientific", font_size=SIZES.display, color=COLORS.fg)
-        line2 = Text("Communication", font_size=SIZES.display, color=COLORS.yellow)
+        line1 = make_text("Scientific", size=SIZES.display, color=COLORS.fg)
+        line2 = make_text("Communication", size=SIZES.display, color=COLORS.yellow)
         subtitle = make_text(
             "Animated slides with Manim and Manim Slides",
             size=SIZES.body,
@@ -66,22 +66,22 @@ class Idea(DemoSlide):
         heading.to_edge(UP, buff=0.85)
 
         circle = Circle(radius=1.4, color=COLORS.blue, stroke_width=6)
-        square = Square(side_length=2.6, color=COLORS.yellow, stroke_width=6)
-        figure = circle.copy()
         note = callout(
             "next_slide()",
             "The audience waits here. Then the shape becomes a square.",
             accent=COLORS.teal,
         )
-        layout = two_column(figure, note, buff=1.2)
+        layout = two_column(circle, note, buff=1.2)
         layout.next_to(heading, DOWN, buff=0.7)
+        square = Square(side_length=2.6, color=COLORS.yellow, stroke_width=6)
+        square.move_to(circle)
 
         self.play(FadeIn(heading))
-        self.play(Create(figure))
+        self.play(Create(circle))
         self.next_slide()
         self.play(FadeIn(note, shift=RIGHT * 0.2))
         self.next_slide()
-        self.play(Transform(figure, square))
+        self.play(Transform(circle, square))
 
 
 class Equation(DemoSlide):

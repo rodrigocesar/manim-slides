@@ -11,7 +11,7 @@ else
   APT=(sudo apt-get)
 fi
 
-echo "==> Installing Ubuntu packages for Manim (Cairo, Pango, FFmpeg, TeX)..."
+echo "==> Installing Ubuntu packages for Manim (Cairo, Pango, FFmpeg, TeX, DejaVu)..."
 "${APT[@]}" update
 "${APT[@]}" install -y --no-install-recommends \
   build-essential \
@@ -25,6 +25,8 @@ echo "==> Installing Ubuntu packages for Manim (Cairo, Pango, FFmpeg, TeX)..."
   texlive-fonts-recommended \
   texlive-science \
   tipa \
+  dvisvgm \
+  fonts-dejavu-core \
   curl \
   ca-certificates
 

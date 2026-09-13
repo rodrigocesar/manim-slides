@@ -50,7 +50,7 @@ Rules:
 - Subclass `SciSlide`. Call `add_chrome(...)` first in `construct`.
 - One class per section. Name classes so they are valid Manim scene names (`Title`, `BayesUpdate`, not `slide-1`).
 - Colors and type sizes come from `COLORS` / `SIZES` only.
-- `Text` / `make_text` for titles and labels. `MathTex` / `colored_math` for equations.
+- `make_text` / `SciSlide.heading` for titles and labels (`font=FONT` is required; raw `Text` drops spaces). `MathTex` / `colored_math` for equations.
 - `self.next_slide()` at every presenter pause. `self.next_slide(loop=True)` only around a repeating animation.
 - Prefer `Create`, `Write`, `FadeIn`, `Transform`, and `fade_in_each`. Keep runtimes short (1–2s).
 - No paragraph walls. If a point needs more than one line, split across pauses or a `callout`.

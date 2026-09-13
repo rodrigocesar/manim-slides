@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from manim import LEFT, RIGHT, UP, Line, Text, VGroup
+from manim import DOWN, LEFT, RIGHT, UP, Line, ManimColor, Text, VGroup
 from manim_slides import Slide
 
-from sci_comm.theme import COLORS, DEFAULT_AUTHOR, SIZES, SPACING
+from sci_comm.theme import COLORS, DEFAULT_AUTHOR, FONT, SIZES, SPACING
 
 
 class SciSlide(Slide):
@@ -21,7 +21,7 @@ class SciSlide(Slide):
 
     def setup(self) -> None:
         super().setup()
-        self.camera.background_color = COLORS.bg
+        self.camera.background_color = ManimColor(COLORS.bg)
 
     def add_chrome(
         self,
@@ -43,7 +43,7 @@ class SciSlide(Slide):
         chrome.add(bar)
 
         if section:
-            label = Text(section, font_size=SIZES.small, color=COLORS.blue)
+            label = Text(section, font=FONT, font_size=SIZES.small, color=COLORS.blue)
             label.to_edge(UP, buff=SPACING.chrome_top + 0.12).to_edge(
                 LEFT, buff=SPACING.margin
             )
@@ -57,7 +57,12 @@ class SciSlide(Slide):
         if index is not None and total is not None:
             bits.append(f"{index} / {total}")
         if bits:
-            footer = Text("  ·  ".join(bits), font_size=SIZES.footer, color=COLORS.muted)
+            footer = Text(
+                "  ·  ".join(bits),
+                font=FONT,
+                font_size=SIZES.footer,
+                color=COLORS.muted,
+            )
             footer.to_edge(DOWN, buff=SPACING.chrome_bottom)
             chrome.add(footer)
 
@@ -65,5 +70,5 @@ class SciSlide(Slide):
         return chrome
 
     def heading(self, text: str, size: int | None = None) -> Text:
-        heading = Text(text, font_size=size or SIZES.title, color=COLORS.fg)
+        heading = Text(text, font=FONT, font_size=size or SIZES.title, color=COLORS.fg)
         return heading
