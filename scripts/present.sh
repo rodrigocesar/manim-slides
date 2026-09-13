@@ -7,6 +7,7 @@ source "${ROOT}/scripts/_talk.sh"
 
 TALK_DIR="$(resolve_talk "${1:-}")"
 PORT="${PORT:-8000}"
+BIND="${BIND:-0.0.0.0}"
 URL="http://127.0.0.1:${PORT}/"
 DIST="${TALK_DIR}/dist"
 NOTES="${TALK_DIR}/SPEAKER_NOTES.md"
@@ -28,4 +29,4 @@ echo "4. Arrow keys or click advance. Space plays/pauses the current clip."
 echo
 echo "Serving ${DIST}  —  Ctrl+C to stop."
 cd "${DIST}"
-python3 -m http.server "${PORT}" --bind 127.0.0.1
+python3 -m http.server "${PORT}" --bind "${BIND}"
