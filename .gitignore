@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+media/
+slides/
+.manim-slides/
+# dist/ is the shareable HTML deck — keep it in the repo
+*.log
+.partial_manim_files/
