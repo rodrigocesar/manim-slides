@@ -1,0 +1,25 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# Manim / Manim Slides
+media/
+slides/
+partial_movie_files/
+*.mp4
+*.mov
+*.gif
+*.partial
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
