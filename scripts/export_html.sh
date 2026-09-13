@@ -26,3 +26,5 @@ manim-slides convert --to html "${SCENES[@]}" dist/index.html \
   -c slide_number=true \
   -c reveal_theme=black \
   -c title="Are we making better decisions?"
+
+python scripts/patch_html.py dist/index.html

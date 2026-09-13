@@ -548,7 +548,9 @@
           description: 'Play / pause video'
         },
         () => {
-          var currentVideos = Reveal.getCurrentSlide().slideBackgroundContentElement.getElementsByTagName("video");
+          var slide = Reveal.getCurrentSlide();
+          var background = slide && slide.slideBackgroundContentElement;
+          var currentVideos = background ? background.getElementsByTagName("video") : [];
           if (currentVideos.length > 0) {
             if (currentVideos[0].paused == true) currentVideos[0].play();
             else currentVideos[0].pause();
