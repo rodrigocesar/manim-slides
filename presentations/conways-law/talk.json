@@ -3,14 +3,10 @@
   "scenes": [
     "WhyArchitecture",
     "InvisibleArchitecture",
-    "NotMicroservices",
     "TPNGGraph",
-    "PlanningTask",
     "AIEnters",
     "NewConwayGraph",
-    "HugePR",
     "SharedContext",
-    "DesignConversations",
     "WhoIsInTheConversation"
   ]
 }

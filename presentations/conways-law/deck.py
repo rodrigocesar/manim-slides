@@ -10,7 +10,7 @@ TALK = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "shared"))
 sys.path.insert(0, str(TALK))
 
-from scenes import agents, closing, conway, opening, solutions, tpng
+from scenes import agents, closing, opening, solutions, tpng
 
 
 class WhyArchitecture(opening.WhyArchitecture):
@@ -21,15 +21,7 @@ class InvisibleArchitecture(opening.InvisibleArchitecture):
     pass
 
 
-class NotMicroservices(conway.NotMicroservices):
-    pass
-
-
 class TPNGGraph(tpng.TPNGGraph):
-    pass
-
-
-class PlanningTask(tpng.PlanningTask):
     pass
 
 
@@ -41,15 +33,7 @@ class NewConwayGraph(agents.NewConwayGraph):
     pass
 
 
-class HugePR(agents.HugePR):
-    pass
-
-
 class SharedContext(solutions.SharedContext):
-    pass
-
-
-class DesignConversations(solutions.DesignConversations):
     pass
 
 

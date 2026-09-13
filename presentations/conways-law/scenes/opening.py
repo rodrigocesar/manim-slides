@@ -41,8 +41,8 @@ class WhyArchitecture(ConwaySlide):
             )
         clean = VGroup(stack, arrows)
 
-        self.play(FadeIn(cap), LaggedStart(*[appear(b) for b in boxes], lag_ratio=0.1), run_time=0.75)
-        self.play(LaggedStart(*[Create(a) for a in arrows], lag_ratio=0.08), run_time=0.45)
+        self.play(FadeIn(cap), LaggedStart(*[appear(b) for b in boxes], lag_ratio=0.1), run_time=0.65)
+        self.play(LaggedStart(*[Create(a) for a in arrows], lag_ratio=0.08), run_time=0.35)
         self.next_slide()
 
         util = SoftwareModule("shared util", width=2.15, height=0.52, accent=UNCERTAINTY)
@@ -55,7 +55,6 @@ class WhyArchitecture(ConwaySlide):
         dup.move_to(RIGHT * 4.15 + UP * 1.35)
         compat.move_to(LEFT * 4.15 + DOWN * 1.35)
         extra_api.move_to(RIGHT * 4.15 + DOWN * 1.55)
-
         extras = VGroup(util, db, dup, compat, extra_api)
         mess = VGroup(
             Line(boxes[0].get_left(), util.get_right(), color=UNCERTAINTY, stroke_width=2),
@@ -67,21 +66,18 @@ class WhyArchitecture(ConwaySlide):
             Line(boxes[0].get_right(), extra_api.get_top() + UP * 0.05, color=DECISION, stroke_width=1.8),
             Line(boxes[2].get_bottom() + RIGHT * 0.8, extra_api.get_left(), color=DECISION, stroke_width=1.8),
         )
-
         got = txt("The architecture we get", size=22, color=UNCERTAINTY)
         got.move_to(cap.get_center())
-        self.play(
-            ReplacementTransform(cap, got),
-            LaggedStart(*[FadeIn(m, scale=0.9) for m in extras], lag_ratio=0.08),
-            LaggedStart(*[Create(line) for line in mess], lag_ratio=0.06),
-            run_time=1.1,
-        )
-        self.next_slide()
-
-        why = txt("Why?", size=76, weight="BOLD", color=DECISION)
+        why = txt("Why?", size=72, weight="BOLD", color=DECISION)
         why.move_to(LEFT * 3.1 + DOWN * 0.15)
         tangle = VGroup(clean, extras, mess)
-        self.play(tangle.animate.scale(0.78).to_edge(RIGHT, buff=0.35), FadeIn(why, scale=0.85), run_time=0.8)
+        self.play(
+            ReplacementTransform(cap, got),
+            LaggedStart(*[FadeIn(m, scale=0.9) for m in extras], lag_ratio=0.06),
+            LaggedStart(*[Create(line) for line in mess], lag_ratio=0.05),
+            run_time=0.9,
+        )
+        self.play(tangle.animate.scale(0.78).to_edge(RIGHT, buff=0.35), FadeIn(why, scale=0.85), run_time=0.65)
         self.next_slide()
 
 
@@ -102,29 +98,31 @@ class InvisibleArchitecture(ConwaySlide):
         cap = txt("Cheap communication → shared system", size=20, color=MUTE)
         cap.move_to(DOWN * 3.15)
 
-        self.play(LaggedStart(*[FadeIn(p, scale=0.9) for p in people], lag_ratio=0.08), run_time=0.55)
-        self.play(LaggedStart(*[Create(e) for e in edges], lag_ratio=0.05), run_time=0.5)
-        play_pulses(self, edges, color=STATE, run_time=0.55)
-        self.play(appear(software), FadeIn(cap), run_time=0.45)
-        flow_dots(self, people, software, color=DECISION, run_time=0.6)
+        self.play(LaggedStart(*[FadeIn(p, scale=0.9) for p in people], lag_ratio=0.08), run_time=0.45)
+        self.play(LaggedStart(*[Create(e) for e in edges], lag_ratio=0.05), run_time=0.4)
+        play_pulses(self, edges, color=STATE, run_time=0.45)
+        self.play(appear(software), FadeIn(cap), run_time=0.4)
+        flow_dots(self, people, software, color=DECISION, run_time=0.5)
         self.next_slide()
 
         extra = [
-            PersonNode("E").move_to(RIGHT * 0.15 + UP * 1.05),
-            PersonNode("F").move_to(RIGHT * 0.15 + DOWN * 0.85),
+            PersonNode("E").move_to(RIGHT * 1.45 + UP * 1.15),
+            PersonNode("F").move_to(RIGHT * 1.45 + DOWN * 0.75),
         ]
-        self.play(LaggedStart(*[FadeIn(p, scale=0.9) for p in extra], lag_ratio=0.1), run_time=0.4)
-
         moves = [
             people[0].animate.move_to(LEFT * 5.15 + UP * 1.15),
             people[1].animate.move_to(LEFT * 5.15 + DOWN * 0.75),
             people[2].animate.move_to(LEFT * 1.85 + UP * 1.15),
             people[3].animate.move_to(LEFT * 1.85 + DOWN * 0.75),
-            extra[0].animate.move_to(RIGHT * 1.45 + UP * 1.15),
-            extra[1].animate.move_to(RIGHT * 1.45 + DOWN * 0.75),
         ]
-        self.play(*moves, FadeOut(VGroup(*edges)), FadeOut(software), FadeOut(cap), run_time=0.75)
-
+        self.play(
+            FadeIn(VGroup(*extra)),
+            *moves,
+            FadeOut(VGroup(*edges)),
+            FadeOut(software),
+            FadeOut(cap),
+            run_time=0.7,
+        )
         teams = VGroup(
             TeamBoundary("Team A", [people[0], people[1]], buff=0.38),
             TeamBoundary("Team B", [people[2], people[3]], buff=0.38),
@@ -138,35 +136,16 @@ class InvisibleArchitecture(ConwaySlide):
             CommunicationEdge(people[3], extra[0], kind="weak"),
             CommunicationEdge(people[1], extra[1], kind="weak"),
         ]
-        mods = VGroup(
-            SoftwareModule("module A", width=2.15, height=0.62, accent=STATE),
-            SoftwareModule("module B", width=2.15, height=0.62, accent=STATE),
-            SoftwareModule("module C", width=2.15, height=0.62, accent=STATE),
-        ).arrange(RIGHT, buff=0.35)
-        mods.move_to(DOWN * 2.55)
+        formula = graph_formula()
+        formula.move_to(DOWN * 2.85)
+        year = txt("1968 — Conway. The danger is when the two graphs disagree.", size=18, color=DECISION)
+        year.move_to(DOWN * 3.45)
         self.play(
             FadeIn(teams),
             LaggedStart(*[Create(e) for e in weak], lag_ratio=0.04),
-            FadeIn(mods, shift=DOWN * 0.1),
-            run_time=0.8,
+            FadeIn(formula),
+            FadeIn(year),
+            run_time=0.75,
         )
-        play_pulses(self, weak[:3], color=STATE, run_time=0.45)
-        play_pulses(self, weak[3:], color=MUTE, run_time=0.7)
-        self.next_slide()
-
-        year = txt("1968  —  Melvin Conway", size=22, color=DECISION, weight="BOLD")
-        quote = txt(
-            "Organizations design systems that reflect\ntheir communication structures.",
-            size=20,
-            color=INK,
-            line_spacing=1.15,
-        )
-        year.move_to(RIGHT * 3.85 + UP * 1.55)
-        quote.next_to(year, DOWN, buff=0.28)
-        self.play(FadeIn(year), FadeIn(quote), run_time=0.55)
-        self.next_slide()
-
-        formula = graph_formula()
-        formula.move_to(DOWN * 3.2)
-        self.play(FadeOut(mods), FadeIn(formula), run_time=0.55)
+        play_pulses(self, weak[:3], color=STATE, run_time=0.4)
         self.next_slide()
