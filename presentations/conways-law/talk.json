@@ -1,13 +1,16 @@
 {
-  "title": "Conway's Law",
+  "title": "Conway's Law — and the conversations nobody else can see",
   "scenes": [
-    "Title",
-    "TheSentence",
-    "OrgMirrorsSystem",
-    "CommunicationNotBoxes",
-    "SeamsBecomeInterfaces",
-    "DORAExample",
-    "InverseConway",
-    "Questions"
+    "WhyArchitecture",
+    "InvisibleArchitecture",
+    "NotMicroservices",
+    "TPNGGraph",
+    "PlanningTask",
+    "AIEnters",
+    "NewConwayGraph",
+    "HugePR",
+    "SharedContext",
+    "DesignConversations",
+    "WhoIsInTheConversation"
   ]
 }

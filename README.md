@@ -5,7 +5,7 @@ A folder of Manim Slides talks. Shared look-and-feel lives in [`shared/`](shared
 | Talk | Folder | Idea |
 |---|---|---|
 | Are we making better decisions? | [`presentations/tpng-better-decisions`](presentations/tpng-better-decisions) | Powell's sequential-decision frame for DORA, Sectorization and last-mile planning |
-| Conway's Law | [`presentations/conways-law`](presentations/conways-law) | Melvin Conway: systems copy communication structure — and what that means for TPNG seams |
+| Conway's Law | [`presentations/conways-law`](presentations/conways-law) | Systems copy communication structure — including private developer–agent conversations |
 
 ## Setup
 
